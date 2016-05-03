@@ -1,6 +1,5 @@
 package solutions.array;
 
-import java.util.Arrays;
 
 /**
  * @AUTHOR: xiaoo_gan
