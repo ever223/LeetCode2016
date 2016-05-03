@@ -29,9 +29,7 @@ public class PlusOne {
         } else {
             int[] result = new int[n + 1];
             result[0] = 1;
-            for (int j = 1; j < result.length; j++) {
-                result[j] = 0;
-            }
+            System.arraycopy(digits, 0, result, 1, n);
             return result;
         }
     }
