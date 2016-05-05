@@ -14,7 +14,6 @@ public class PathSum {
         if (root.left == null && root.right == null && sum == 0) {
             return true;
         }
-
         boolean left = false;
         if (root.left != null) {
             left = hasPathSum(root.left, sum);
