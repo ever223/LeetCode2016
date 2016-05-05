@@ -5,11 +5,11 @@ import java.util.List;
 
 /**
  * @AUTHOR: xiaoo_gan
- * @DATE: 2016-05-05 11:28.
+ * @DATE: 2016-05-05 16:50.
  * @DESCRIPTION:
  */
-public class BinaryTreeLevelOrderTraversal {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+public class BinaryTreeLevelOrderTraversalII {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> order = new ArrayList<>();
         if (root == null) {
             return order;
@@ -30,7 +30,7 @@ public class BinaryTreeLevelOrderTraversal {
                 }
                 n --;
             }
-            order.add(level);
+            order.add(0, level);
         }
         return order;
     }
