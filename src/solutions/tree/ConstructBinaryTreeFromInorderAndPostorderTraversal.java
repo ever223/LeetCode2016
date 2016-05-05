@@ -8,7 +8,7 @@ package solutions.tree;
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         return buildTree(inorder, 0, inorder.length,
-                         postorder, 0, postorder.length);
+                postorder, 0, postorder.length);
     }
     public TreeNode buildTree(int[] inorder, int iStart, int iEnd,
                               int[] postorder, int pStart, int pEnd) {
@@ -21,9 +21,9 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
             posOfRootInInorder ++;
         }
         root.left = buildTree(inorder, iStart, posOfRootInInorder,
-                              postorder, pStart, pStart + posOfRootInInorder - iStart);
+                postorder, pStart, pStart + posOfRootInInorder - iStart);
         root.right = buildTree(inorder, posOfRootInInorder + 1, iEnd,
-                               postorder,  pStart + posOfRootInInorder - iStart, pEnd - 1);
+                postorder,  pStart + posOfRootInInorder - iStart, pEnd - 1);
         return root;
     }
 }
