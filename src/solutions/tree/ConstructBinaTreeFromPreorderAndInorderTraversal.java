@@ -16,16 +16,16 @@ public class ConstructBinaTreeFromPreorderAndInorderTraversal {
             return null;
         }
         TreeNode root = new TreeNode(preorder[pStart]);
-        int i = iStart;
-        for (; i < iEnd; i ++) {
-            if (inorder[i] == preorder[pStart]) {
+        int posOfRootInInorder = iStart;
+        for (; posOfRootInInorder < iEnd; posOfRootInInorder ++) {
+            if (inorder[posOfRootInInorder] == preorder[pStart]) {
                 break;
             }
         }
-        root.left = bulidTree(preorder, pStart + 1, pStart + 1 + i - iStart,
-                inorder, iStart, i);
-        root.right = bulidTree(preorder, pStart + 1 + i - iStart, pEnd,
-                inorder, i + 1, iEnd);
+        root.left = bulidTree(preorder, pStart + 1, pStart + 1 + posOfRootInInorder - iStart,
+                inorder, iStart, posOfRootInInorder);
+        root.right = bulidTree(preorder, pStart + 1 + posOfRootInInorder - iStart, pEnd,
+                inorder, posOfRootInInorder + 1, iEnd);
         return root;
     }
 }
