@@ -21,7 +21,7 @@ public class PathSumII {
         sum -= root.val;
         path.add(root.val);
         if(sum == 0 && root.left == null && root.right == null) {
-            paths.add(path);
+            paths.add(new ArrayList<Integer>(path));
             return;
         }
         if(root.left != null) {
@@ -30,5 +30,6 @@ public class PathSumII {
         if(root.right != null) {
             pathSum(root.right, new ArrayList<>(path), paths, sum);
         }
+        path.remove(path.size() - 1);
     }
 }
