@@ -13,15 +13,14 @@ public class ReverseLinkedListII {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode mNode = dummy;
-        ListNode nNode = dummy;
-        while(n != 0) {
-            nNode = nNode.next;
-            n --;
+        ListNode cursor = dummy;
+        for(int i = 0; i < n; i ++) {
+            if (i == m - 1) {
+                mNode = cursor;
+            }
+            cursor = cursor.next;
         }
-        while(m != 1) {
-            mNode = mNode.next;
-            m --;
-        }
+        ListNode nNode = cursor;
         ListNode reverse = mNode.next;
         mNode.next = nNode.next;
         nNode.next = null;

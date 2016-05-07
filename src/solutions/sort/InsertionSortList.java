@@ -12,7 +12,8 @@ public class InsertionSortList {
         ListNode dummy = new ListNode(-1);
         while(head != null) {
             ListNode cursor = dummy;
-            while(cursor.next != null && cursor.next.val < head.val) {
+            // = 保持算法的稳定性
+            while(cursor.next != null && cursor.next.val <= head.val) {
                 cursor = cursor.next;
             }
             ListNode temp = head.next;
