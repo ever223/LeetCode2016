@@ -17,4 +17,7 @@ public class AddDigits {
         }
         return num;
     }
+    public int addDigits1(int num) {
+        return (num - 1) % 9 + 1;
+    }
 }
