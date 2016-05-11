@@ -30,10 +30,8 @@ public class ValidAnagram {
         for (Character c : sMap.keySet()) {
             if (!Objects.equals(sMap.get(c), tMap.get(c))) {
                 return false;
-            } else {
-                tMap.remove(c);
             }
         }
-        return tMap.isEmpty();
+        return true;
     }
 }
