@@ -7,10 +7,7 @@ package solutions.tree;
  */
 public class LowestCommonAncestorOfABinarySearchTree {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (p == null || q == null) {
-            return null;
-        }
-        if (root == null) {
+        if (root == null || p == null || q == null) {
             return null;
         }
         if (root.val < p.val && root.val < q.val) {
