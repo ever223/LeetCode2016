@@ -15,8 +15,8 @@ public class SingleNumberII {
                 positive ++;
             }
             for (int j = 0; j < count.length && num != 0; j++) {
-                count[j] += num % 2;
-                num /= 2;
+                count[j] += num & 1;
+                num >>= 1;
             }
         }
         int single = 0;
@@ -28,4 +28,31 @@ public class SingleNumberII {
         }
         return single;
     }
+    public int singleNumber2(int[] nums) {
+        int[] count = new int[32];
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            for (int j = 0; j < count.length && (num >> j) != 0; j++) {
+                count[j] += (num >> j) & 1;
+            }
+        }
+        int single = 0;
+        for (int i = 0; i < 32; i++) {
+            single |= (count[i] % 3) << i;
+        }
+        return single;
+    }
+
+    public int singleNumber1(int[] nums) {
+        int len = nums.length, result = 0;
+        for (int i = 0; i < 32; i++) {
+            int sum = 0;
+            for (int j = 0; j < len; j++) {
+                sum += (nums[j] >> i) & 1;
+            }
+            result |= (sum % 3) << i;
+        }
+        return result;
+    }
+
 }
