@@ -74,13 +74,6 @@ public class AddAndSearchWord_DataStructureDesign {
     }
 }
 
-
-
-
-
-
-
-
 // Your WordDictionary object will be instantiated and called as such:
 // WordDictionary wordDictionary = new WordDictionary();
 // wordDictionary.addWord("word");

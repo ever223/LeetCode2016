@@ -1,6 +1,5 @@
 package solutions.trie;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,21 +60,16 @@ public class WordSearchII {
         for (String word : words) {
             trie.insert(word);
         }
-        boolean[][] visited = new boolean[board.length][board[0].length];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                dfs(i, j, board, visited, root, trie, result);
+                dfs(i, j, board, root, trie, result);
             }
         }
 
         return result;
     }
-    public void dfs(int i, int j, char[][] board, boolean[][] visited, TrieNode parent, Trie trie, List<String> result) {
-        if (i < 0
-                || i == board.length
-                || j < 0
-                || j == board[0].length
-                || visited[i][j]) {
+    public void dfs(int i, int j, char[][] board, TrieNode parent, Trie trie, List<String> result) {
+        if (board[i][j] == '#') {
             return;
         }
         int pos = board[i][j] - 'a';
@@ -83,19 +77,24 @@ public class WordSearchII {
         if (node == null) {
             return;
         }
-
         if (node.getFullString() != null) {
             result.add(node.getFullString());
             node.SetFullString(null);
         }
-
-        visited[i][j] = true;
-
-        dfs(i - 1, j, board, visited, node, trie, result);
-        dfs(i + 1, j, board, visited, node, trie, result);
-        dfs(i, j - 1, board, visited, node, trie, result);
-        dfs(i, j + 1, board, visited, node, trie, result);
-
-        visited[i][j] = false;
+        char c = board[i][j];
+        board[i][j] = '#';
+        if (i > 0) {
+            dfs(i - 1, j, board, node, trie, result);
+        }
+        if(i < board.length - 1) {
+            dfs(i + 1, j, board,  node, trie, result);
+        }
+        if(j > 0) {
+            dfs(i, j - 1, board, node, trie, result);
+        }
+        if(j < board[0].length - 1) {
+            dfs(i, j + 1, board,  node, trie, result);
+        }
+        board[i][j] = c;
     }
 }
