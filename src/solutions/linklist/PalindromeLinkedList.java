@@ -9,6 +9,41 @@ import solutions.tree.TreeNode;
  */
 public class PalindromeLinkedList {
     public boolean isPalindrome(ListNode head) {
+        if(head == null || head.next == null) {
+            return true;
+        }
+        ListNode p = head;
+        ListNode q = head;
+        while (q != null) {
+            p = p.next;
+            q = q.next;
+            if (q == null) {
+                break;
+            }
+            q = q.next;
+        }
+        ListNode dummy = new ListNode(-1);
+        while (p != null) {
+            ListNode temp = p.next;
+            p.next = dummy.next;
+            dummy.next = p;
+            p = temp;
+        }
+
+        ListNode preHalf = head;
+        ListNode postHalf = dummy.next;
+        while (postHalf != null) {
+            if(preHalf.val != postHalf.val) {
+                return false;
+            }
+            preHalf = preHalf.next;
+            postHalf = postHalf.next;
+        }
+
+        return true;
+    }
+
+    public boolean isPalindrome1(ListNode head) {
         int length = 0;
         ListNode cursor = head;
         while(cursor != null) {
