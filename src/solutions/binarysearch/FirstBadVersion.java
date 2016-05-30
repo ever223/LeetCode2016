@@ -33,10 +33,6 @@ public class FirstBadVersion extends VersionControl {
             return left;
         }
         int mid = left + ((right - left) >> 1);
-        if (isBadVersion(mid)) {
-            return bs(left, mid);
-        } else {
-           return bs(mid + 1, right);
-        }
+        return isBadVersion(mid) ? bs(left, mid) : bs(mid + 1, right);
     }
 }
