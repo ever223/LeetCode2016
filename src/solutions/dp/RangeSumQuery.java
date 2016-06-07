@@ -6,24 +6,17 @@ package solutions.dp;
  * @DESCRIPTION:
  */
 public class RangeSumQuery {
-
     private int[] nums;
     private int[] sum;
     public RangeSumQuery(int[] nums) {
         this.nums = nums;
-        sum = new int[nums.length];
+        sum = new int[nums.length + 1];
         for (int i = 0; i < nums.length; i++) {
-            if (i == 0) {
-                sum[0] = nums[0];
-            } else {
-                sum[i] = sum[i - 1] + nums[i];
-            }
+            sum[i + 1] = sum[i] + nums[i];
         }
     }
-
-
     public int sumRange(int i, int j) {
-        return sum[j] - sum[i] + nums[i];
+        return sum[j + 1] - sum[i];
     }
 }
 
