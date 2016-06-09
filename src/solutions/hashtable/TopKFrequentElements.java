@@ -53,7 +53,6 @@ public class TopKFrequentElements {
             heapSize --;
             adjust(elements, 1, heapSize);
         }
-
     }
     private void swap(Element[] elements, int i, int j) {
         Element temp = elements[i];
