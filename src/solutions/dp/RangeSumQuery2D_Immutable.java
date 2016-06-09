@@ -6,6 +6,8 @@ package solutions.dp;
  * @DESCRIPTION:
  */
 public class RangeSumQuery2D_Immutable {
+
+    // extra space
     public class NumMatrix {
 
         private int[][] sum;
@@ -27,6 +29,8 @@ public class RangeSumQuery2D_Immutable {
             return sum[row2 + 1][col2 + 1] - sum[row2 + 1][col1] - sum[row1][col2 + 1] + sum[row1][col1];
         }
     }
+
+    // no extra space
     public class NumMatrix1 {
 
         private int[][] matrix;
